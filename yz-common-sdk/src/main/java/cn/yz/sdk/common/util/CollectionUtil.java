@@ -9,6 +9,6 @@ public class CollectionUtil {
         if (collection == null){
             throw new CollectionException(ExceptionCode.NOT_NULL);
         }
-        return collection.iterator().hasNext();
+        return !collection.iterator().hasNext();
     }
 }
