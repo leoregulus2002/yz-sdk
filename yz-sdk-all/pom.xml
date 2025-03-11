@@ -7,10 +7,14 @@
         <groupId>cn.yz</groupId>
         <artifactId>yz-sdk</artifactId>
         <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>common-sdk</artifactId>
+    <artifactId>yz-sdk-all</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>cn.yz</groupId>
+            <artifactId>yz-common-sdk</artifactId>
+        </dependency>
+    </dependencies>
 </project>

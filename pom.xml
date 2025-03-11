@@ -9,8 +9,8 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
     <modules>
-        <module>common-sdk</module>
-        <module>yz-sdk-max</module>
+        <module>yz-common-sdk</module>
+        <module>yz-sdk-all</module>
     </modules>
 
     <properties>
@@ -24,22 +24,9 @@
         <dependencies>
             <dependency>
                 <groupId>cn.yz</groupId>
-                <artifactId>common-sdk</artifactId>
+                <artifactId>yz-common-sdk</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <!-- 资源插件 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

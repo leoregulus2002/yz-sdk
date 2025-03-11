@@ -1,8 +1,5 @@
 package cn.yz.sdk.common.util;
 
-import com.sun.tools.javac.util.ArrayUtils;
-import sun.security.util.ArrayUtil;
-
 public class StrUtil{
 
     public static Boolean contains(CharSequence str,CharSequence strSearch){
