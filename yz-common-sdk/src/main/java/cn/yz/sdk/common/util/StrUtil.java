@@ -2,7 +2,10 @@ package cn.yz.sdk.common.util;
 
 public class StrUtil{
 
-    public static Boolean contains(CharSequence str,CharSequence strSearch){
+    private StrUtil() {
+    }
+
+    public static Boolean contains(CharSequence str, CharSequence strSearch){
         return str != null && strSearch != null && str.toString().contains(strSearch);
     }
 

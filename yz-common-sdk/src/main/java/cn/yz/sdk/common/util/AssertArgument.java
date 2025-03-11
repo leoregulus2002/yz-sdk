@@ -34,6 +34,17 @@ public class AssertArgument {
         });
     }
 
+    public static <X extends Throwable> void isNotBlank(String str, Supplier<? extends X> supplier) throws X{
+        if (str == null || str.isBlank()){
+            throw supplier.get();
+        }
+    }
+    public static void isNotBlank(String str,String message,Object... params){
+        isNotBlank(str, () ->{
+            throw new AssertException(StrUtil.format(message,params));
+        });
+    }
+
     public static <E,T extends Iterable<E> ,X extends Throwable> void isEmpty(T collection, Supplier<? extends X> supplier) throws X {
         if (!CollectionUtil.isEmpty(collection)){
             throw supplier.get();
@@ -66,6 +77,44 @@ public class AssertArgument {
 
     public static <K,V,T extends Map<K,V>> void isEmpty(T map,String message,Object... params)  {
         isEmpty(map,() ->{
+            throw new AssertException(StrUtil.format(message,params));
+        });
+    }
+
+
+
+    public static <E,T extends Iterable<E> ,X extends Throwable> void isNotEmpty(T collection, Supplier<? extends X> supplier) throws X {
+        if (CollectionUtil.isEmpty(collection)){
+            throw supplier.get();
+        }
+    }
+
+    public static <E,T extends Iterable<E>> void isNotEmpty(T collection,String message,Object... params) {
+        isNotEmpty(collection,()->{
+            throw new AssertException(StrUtil.format(message,params));
+        });
+    }
+
+    public static <T ,X extends Throwable> void isNotEmpty(T[] array, Supplier<? extends X> supplier) throws X {
+        if (ArrayUtil.isEmpty(array)){
+            throw supplier.get();
+        }
+    }
+
+    public static <T> void isNotEmpty(T[] array,String message,Object... params) {
+        isNotEmpty(array,()->{
+            throw new AssertException(StrUtil.format(message,params));
+        });
+    }
+
+    public static <K,V,T extends Map<K,V>,X extends Throwable> void isNotEmpty(T map, Supplier<? extends X> supplier) throws X {
+        if (MapUtil.isEmpty(map)){
+            throw supplier.get();
+        }
+    }
+
+    public static <K,V,T extends Map<K,V>> void isNotEmpty(T map,String message,Object... params)  {
+        isNotEmpty(map,() ->{
             throw new AssertException(StrUtil.format(message,params));
         });
     }

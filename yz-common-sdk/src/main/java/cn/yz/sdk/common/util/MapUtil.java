@@ -7,6 +7,9 @@ import java.util.Map;
 
 public class MapUtil {
 
+    private MapUtil() {
+    }
+
     public static  <K,V,T extends Map<K,V>> Boolean isEmpty(T map){
         if (map == null){
             throw new MapException(ExceptionCode.NOT_NULL);
