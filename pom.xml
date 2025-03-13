@@ -11,13 +11,13 @@
     <modules>
         <module>yz-common-sdk</module>
         <module>yz-sdk-all</module>
+        <module>yz-crypto-sdk</module>
     </modules>
 
     <properties>
         <!-- 全局版本控制，如果要修改版本号，修改此处即可-->
         <revision>1.0.0</revision>
         <java.version>17</java.version>
-
     </properties>
 
     <dependencyManagement>
@@ -25,6 +25,11 @@
             <dependency>
                 <groupId>cn.yz</groupId>
                 <artifactId>yz-common-sdk</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.yz</groupId>
+                <artifactId>yz-crypto-sdk</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>

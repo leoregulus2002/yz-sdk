@@ -13,7 +13,15 @@ public class StrUtil{
         if (format == null){
             return "null";
         }else {
-            return String.format(format.toString(),param);
+            return java.lang.String.format(format.toString(),param);
         }
+    }
+
+    public static String bytesToHex(byte[] bytes) {
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : bytes) {
+            hexString.append(String.format("%02x", b));
+        }
+        return hexString.toString();
     }
 }

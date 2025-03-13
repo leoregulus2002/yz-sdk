@@ -7,9 +7,10 @@
         <groupId>cn.yz</groupId>
         <artifactId>yz-sdk</artifactId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>yz-sdk-all</artifactId>
+    <artifactId>yz-crypto-sdk</artifactId>
 
     <dependencies>
         <dependency>
@@ -17,8 +18,10 @@
             <artifactId>yz-common-sdk</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.yz</groupId>
-            <artifactId>yz-crypto-sdk</artifactId>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15to18</artifactId>
+            <version>1.78.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
