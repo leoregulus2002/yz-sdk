@@ -13,7 +13,12 @@ public class StrUtil{
         if (format == null){
             return "null";
         }else {
-            return java.lang.String.format(format.toString(),param);
+            String pattern = format.toString();
+            for (int i = 0; i < param.length; i++) {
+                pattern = pattern.replaceFirst("\\{}",  param[i].toString());
+            }
+            // 使用 String.format 实现标准的格式化
+            return String.format(pattern, param);
         }
     }
 
@@ -24,4 +29,5 @@ public class StrUtil{
         }
         return hexString.toString();
     }
+
 }
