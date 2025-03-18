@@ -2,7 +2,11 @@ package cn.yz.sdk.common.exception;
 
 import cn.yz.sdk.common.util.StrUtil;
 
+import java.io.Serial;
+
 public class BaseUncheckedException extends RuntimeException{
+    @Serial
+    private static final long serialVersionUID = 4955410990126902125L;
     private String message;
     private int code;
 

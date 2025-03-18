@@ -1,6 +1,11 @@
 package cn.yz.sdk.common.exception;
 
+import java.io.Serial;
+
 public class AssertException extends BaseUncheckedException{
+    @Serial
+    private static final long serialVersionUID = 656951990294962562L;
+
     public AssertException(Throwable cause) {
         super(cause);
     }

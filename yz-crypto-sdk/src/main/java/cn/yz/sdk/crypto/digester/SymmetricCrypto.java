@@ -3,8 +3,6 @@ package cn.yz.sdk.crypto.digester;
 import cn.yz.sdk.common.exception.CryptoException;
 import cn.yz.sdk.crypto.enmu.GlobalBouncyCastleProvider;
 import cn.yz.sdk.crypto.enmu.SymmetricCryptoAlgorithm;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -15,11 +13,10 @@ import java.security.Provider;
 import java.util.Base64;
 
 public class SymmetricCrypto {
-    private static final Logger log = LoggerFactory.getLogger(SymmetricCrypto.class);
     private SymmetricCrypto(){}
 
     public static String encrypt(String data, String key,SymmetricCryptoAlgorithm algorithm) {
-        byte[] encryptedData = new byte[0];
+        byte[] encryptedData;
         try {
             Cipher cipher = createCipher(algorithm);
             byte[] decodeKey = Base64.getDecoder().decode(key);
@@ -33,7 +30,7 @@ public class SymmetricCrypto {
     }
 
     public static String decrypt(String encryptedData, String key,SymmetricCryptoAlgorithm algorithm) {
-        byte[] decryptedData = new byte[0];
+        byte[] decryptedData;
         try {
             Cipher cipher = createCipher(algorithm);
             byte[] decodeKey = Base64.getDecoder().decode(key);

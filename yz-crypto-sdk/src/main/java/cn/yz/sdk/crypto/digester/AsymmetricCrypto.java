@@ -14,7 +14,7 @@ import java.util.Base64;
 
 public class AsymmetricCrypto {
 
-    private AsymmetricCrypto(){};
+    private AsymmetricCrypto(){}
 
     public static KeyPair generateKeyPair(AsymmetricCryptoAlgorithm algorithm){
         int keySize = 1024;
