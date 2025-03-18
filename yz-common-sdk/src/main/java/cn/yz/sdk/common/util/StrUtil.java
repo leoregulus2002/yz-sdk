@@ -9,16 +9,19 @@ public class StrUtil{
         return str != null && strSearch != null && str.toString().contains(strSearch);
     }
 
+    /**
+     * 字符串格式化
+     */
     public static String format(CharSequence format,Object... param){
         if (format == null){
             return "null";
         }else {
             String pattern = format.toString();
-            for (int i = 0; i < param.length; i++) {
-                pattern = pattern.replaceFirst("\\{}",  param[i].toString());
+            for (Object o : param) {
+                pattern = pattern.replaceFirst("\\{}", o.toString());
             }
             // 使用 String.format 实现标准的格式化
-            return String.format(pattern, param);
+            return pattern;
         }
     }
 
@@ -30,4 +33,7 @@ public class StrUtil{
         return hexString.toString();
     }
 
+    public static void main(String[] args) {
+        System.out.println(StrUtil.format("{},{}",123,245));
+    }
 }

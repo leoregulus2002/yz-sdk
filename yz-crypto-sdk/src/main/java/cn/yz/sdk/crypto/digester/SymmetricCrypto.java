@@ -1,7 +1,6 @@
 package cn.yz.sdk.crypto.digester;
 
 import cn.yz.sdk.common.exception.CryptoException;
-import cn.yz.sdk.common.util.ExceptionUtil;
 import cn.yz.sdk.crypto.enmu.GlobalBouncyCastleProvider;
 import cn.yz.sdk.crypto.enmu.SymmetricCryptoAlgorithm;
 import org.slf4j.Logger;
@@ -23,11 +22,12 @@ public class SymmetricCrypto {
         byte[] encryptedData = new byte[0];
         try {
             Cipher cipher = createCipher(algorithm);
-            SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), algorithm.getType());
+            byte[] decodeKey = Base64.getDecoder().decode(key);
+            SecretKeySpec secretKey = new SecretKeySpec(decodeKey, algorithm.getType());
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             encryptedData = cipher.doFinal(data.getBytes());
         } catch (Exception e) {
-            log.error(ExceptionUtil.getMessage(e));
+            throw new CryptoException(e);
         }
         return Base64.getEncoder().encodeToString(encryptedData);
     }
@@ -36,19 +36,28 @@ public class SymmetricCrypto {
         byte[] decryptedData = new byte[0];
         try {
             Cipher cipher = createCipher(algorithm);
-            SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), algorithm.getType());
+            byte[] decodeKey = Base64.getDecoder().decode(key);
+            SecretKeySpec secretKey = new SecretKeySpec(decodeKey, algorithm.getType());
             cipher.init(Cipher.DECRYPT_MODE, secretKey);
             decryptedData = cipher.doFinal(Base64.getDecoder().decode(encryptedData));
 
         } catch (Exception e) {
-            log.error(ExceptionUtil.getMessage(e));
+            throw new CryptoException(e);
         }
         return new String(decryptedData);
     }
 
+    public static String generateKey(SymmetricCryptoAlgorithm algorithm) {
+        return generateKey(algorithm,-1);
+    }
     public static String generateKey(SymmetricCryptoAlgorithm algorithm,int keySize) {
         KeyGenerator keyGenerator = createSymmetricCrypto(algorithm);
-        keyGenerator.init(keySize);
+        if (keySize <= 0 && SymmetricCryptoAlgorithm.AES.equals(algorithm)) {
+            keySize = 128;
+        }
+        if (keySize > 0){
+            keyGenerator.init(keySize);
+        }
         SecretKey secretKey = keyGenerator.generateKey();
         return Base64.getEncoder().encodeToString(secretKey.getEncoded());
     }

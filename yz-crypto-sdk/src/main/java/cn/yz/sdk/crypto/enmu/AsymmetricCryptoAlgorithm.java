@@ -1,18 +1,15 @@
 package cn.yz.sdk.crypto.enmu;
 
-public enum SymmetricCryptoAlgorithm {
-    AES("AES"),
-    DES("DES"),
-    RC4("RC4"),
-    Blowfish("Blowfish"),
-    DESede("DESede"),
-    SM4("SM4"),
-    RC2("RC2"),
+public enum AsymmetricCryptoAlgorithm {
+    RSA("RSA"),
+    ECIES("ECIES"),
+    SM2("SM2"),
+    ElGamal("ElGamal"),
     ;
 
     private final String type;
 
-    SymmetricCryptoAlgorithm(String type) {
+    AsymmetricCryptoAlgorithm(String type) {
         this.type = type;
     }
 
