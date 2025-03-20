@@ -11,7 +11,7 @@ public enum ExceptionCode {
     private final int code;
     private String msg;
 
-    private ExceptionCode(int code, String msg) {
+    ExceptionCode(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }

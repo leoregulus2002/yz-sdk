@@ -5,10 +5,7 @@ import cn.yz.sdk.crypto.enmu.GlobalBouncyCastleProvider;
 import cn.yz.sdk.crypto.enmu.SymmetricCryptoAlgorithm;
 
 import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import java.security.NoSuchAlgorithmException;
 import java.security.Provider;
 import java.util.Base64;
 
@@ -44,29 +41,7 @@ public class SymmetricCrypto {
         return new String(decryptedData);
     }
 
-    public static String generateKey(SymmetricCryptoAlgorithm algorithm) {
-        return generateKey(algorithm,-1);
-    }
-    public static String generateKey(SymmetricCryptoAlgorithm algorithm,int keySize) {
-        KeyGenerator keyGenerator = createSymmetricCrypto(algorithm);
-        if (keySize <= 0 && SymmetricCryptoAlgorithm.AES.equals(algorithm)) {
-            keySize = 128;
-        }
-        if (keySize > 0){
-            keyGenerator.init(keySize);
-        }
-        SecretKey secretKey = keyGenerator.generateKey();
-        return Base64.getEncoder().encodeToString(secretKey.getEncoded());
-    }
 
-    private static KeyGenerator createSymmetricCrypto(SymmetricCryptoAlgorithm algorithm) {
-        Provider provider = GlobalBouncyCastleProvider.INSTANCE.getProvider();
-        try {
-            return null == provider ? KeyGenerator.getInstance(algorithm.getType()) : KeyGenerator.getInstance(algorithm.getType(), provider);
-        } catch (NoSuchAlgorithmException e) {
-            throw new CryptoException(e);
-        }
-    }
 
     private static Cipher createCipher(SymmetricCryptoAlgorithm algorithm) {
         Provider provider = GlobalBouncyCastleProvider.INSTANCE.getProvider();
