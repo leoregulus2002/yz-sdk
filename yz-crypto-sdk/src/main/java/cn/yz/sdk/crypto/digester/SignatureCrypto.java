@@ -1,7 +1,7 @@
 package cn.yz.sdk.crypto.digester;
 
 import cn.yz.sdk.common.exception.CryptoException;
-import cn.yz.sdk.crypto.enmu.SignatureAlgorithm;
+import cn.yz.sdk.crypto.enumerate.SignatureAlgorithm;
 
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;

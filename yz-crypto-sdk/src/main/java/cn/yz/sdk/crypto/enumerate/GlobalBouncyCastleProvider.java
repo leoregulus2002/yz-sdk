@@ -1,4 +1,4 @@
-package cn.yz.sdk.crypto.enmu;
+package cn.yz.sdk.crypto.enumerate;
 
 import java.io.Serializable;
 import java.security.Provider;

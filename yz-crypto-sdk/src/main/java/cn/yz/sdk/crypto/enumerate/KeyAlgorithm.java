@@ -1,15 +1,24 @@
-package cn.yz.sdk.crypto.enmu;
+package cn.yz.sdk.crypto.enumerate;
 
-public enum AsymmetricCryptoAlgorithm {
+public enum KeyAlgorithm {
+
     RSA("RSA"),
     ECIES("ECIES"),
     SM2("SM2"),
     ElGamal("ElGamal"),
+    AES("AES"),
+    DES("DES"),
+    RC4("RC4"),
+    Blowfish("Blowfish"),
+    DESede("DESede"),
+    SM4("SM4"),
+    RC2("RC2"),
+    ECDSA("ECDSA"),
     ;
 
     private final String type;
 
-    AsymmetricCryptoAlgorithm(String type) {
+    KeyAlgorithm(String type) {
         this.type = type;
     }
 

@@ -17,6 +17,6 @@ public class ArrayException extends BaseUncheckedException{
 
     public String toString() {
         String message = this.getMessage();
-        return "CollectionException [message=" + message + ", code=" + this.getCode() + "]";
+        return STR."CollectionException [message=\{message}, code=\{this.getCode()}]";
     }
 }

@@ -1,4 +1,4 @@
-package cn.yz.sdk.crypto.enmu;
+package cn.yz.sdk.crypto.enumerate;
 
 public enum SummaryAlgorithm {
     SHA1("SHA-1"),

@@ -1,8 +1,8 @@
 package cn.yz.sdk.crypto.digester;
 
 import cn.yz.sdk.common.exception.CryptoException;
-import cn.yz.sdk.crypto.enmu.AsymmetricCryptoAlgorithm;
-import cn.yz.sdk.crypto.enmu.GlobalBouncyCastleProvider;
+import cn.yz.sdk.crypto.enumerate.AsymmetricCryptoAlgorithm;
+import cn.yz.sdk.crypto.enumerate.GlobalBouncyCastleProvider;
 
 import javax.crypto.Cipher;
 import java.security.Key;
